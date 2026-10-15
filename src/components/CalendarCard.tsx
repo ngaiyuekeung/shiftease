@@ -5,7 +5,6 @@ import {
   cn,
   findShift,
   formatPretty,
-  hasAnyShift,
   monthCells,
   monthOf,
   monthRemainCopy,
@@ -72,7 +71,6 @@ export function CalendarCard({
   const viewingNow = visible.y === monthOf(todayKey).y && visible.m === monthOf(todayKey).m
   const selectedEntry = selected ? days[selected] : undefined
   const showEditor = tool === 'none' && selected !== null
-  const empty = !hasAnyShift(days)
 
   useEffect(() => {
     const before = prevDays.current
@@ -280,9 +278,6 @@ export function CalendarCard({
             />
           </label>
         </div>
-      ) : null}
-      {empty && tool === 'none' && !selected ? (
-        <p className="empty-hint">点下面的刷班，在日期上划一下就排好。</p>
       ) : null}
     </section>
   )

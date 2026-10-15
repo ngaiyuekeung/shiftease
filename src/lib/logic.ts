@@ -259,10 +259,6 @@ export function findShift(shifts: Shift[], id: string | null | undefined): Shift
   return shifts.find((shift) => shift.id === id) ?? null
 }
 
-export function hasAnyShift(days: Record<string, { shiftId: string | null }>): boolean {
-  return Object.values(days).some((day) => day.shiftId)
-}
-
 export function cn(...parts: Array<string | false | null | undefined>): string {
   return parts.filter(Boolean).join(' ')
 }

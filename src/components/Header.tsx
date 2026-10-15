@@ -28,38 +28,40 @@ export function Header() {
   }
 
   return (
-    <header className="header" data-keep>
-      {editing ? (
-        <input
-          className="name-input"
-          aria-label="你的名字"
-          placeholder="你的名字"
-          autoFocus
-          maxLength={24}
-          value={draft}
-          onChange={(event) => setDraft(event.target.value)}
-          onBlur={commit}
-          onKeyDown={(event) => {
-            if (event.key === 'Enter') event.currentTarget.blur()
-            if (event.key === 'Escape') {
-              cancel.current = true
+    <header className="header">
+      <div data-keep>
+        {editing ? (
+          <input
+            className="name-input"
+            aria-label="你的名字"
+            placeholder="你的名字"
+            autoFocus
+            maxLength={24}
+            value={draft}
+            onChange={(event) => setDraft(event.target.value)}
+            onBlur={commit}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') event.currentTarget.blur()
+              if (event.key === 'Escape') {
+                cancel.current = true
+                setDraft(name)
+                setEditing(false)
+              }
+            }}
+          />
+        ) : (
+          <button
+            type="button"
+            className={name ? 'name' : 'name placeholder'}
+            onClick={() => {
               setDraft(name)
-              setEditing(false)
-            }
-          }}
-        />
-      ) : (
-        <button
-          type="button"
-          className={name ? 'name' : 'name placeholder'}
-          onClick={() => {
-            setDraft(name)
-            setEditing(true)
-          }}
-        >
-          {name || '你的名字'}
-        </button>
-      )}
+              setEditing(true)
+            }}
+          >
+            {name || '你的名字'}
+          </button>
+        )}
+      </div>
       <p className="greet">{greeting(hour)}</p>
     </header>
   )

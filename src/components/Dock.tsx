@@ -156,7 +156,7 @@ export function Dock({
                   <button type="button" className="textbtn" disabled={!pattern.length} onClick={() => apply('weeks')}>
                     排满 4 周
                   </button>
-                  {done ? <p className="done">{done}。不满意就撤销。</p> : null}
+                  {done ? <p className="done">{done}</p> : null}
                 </>
               )}
             </div>
